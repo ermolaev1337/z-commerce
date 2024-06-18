@@ -45,13 +45,15 @@ services:
       - ./z-commerce-storefront/src:/app/src
       - ./storefront.env:/app/.env
     ports:
-      - 80:8000
+#      - 80:8000 #dev
+      - 80:8001 #build
     depends_on:
       - medusa
 #    command: yarn dev
     command: bash -c "yarn build && yarn start"
     healthcheck:
-      test: [ "CMD", "curl", "-f", "http://localhost:8000" ]
+#      test: [ "CMD", "curl", "-f", "http://localhost:8000" ] #dev
+      test: [ "CMD", "curl", "-f", "http://localhost:8001" ] #build
       interval: 30s
       timeout: 60s
       retries: 5
