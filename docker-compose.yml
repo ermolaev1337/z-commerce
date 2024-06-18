@@ -11,24 +11,24 @@ services:
       - 5432:5432
     healthcheck:
       test: [ "CMD-SHELL", "pg_isready", "-d", "db_prod" ]
-      interval: 30s
-      timeout: 60s
-      retries: 5
-      start_period: 80s
 
   medusa:
     container_name: medusa
     build:
       dockerfile: medusa.Dockerfile
     volumes:
+      - ./z-commerce-medusa/medusa-config.js:/app/medusa-config.js
       - ./z-commerce-medusa/src:/app/src
       - ./medusa.env:/app/.env
     ports:
-      - 7001:7001
+#      - 7001:7001 #dev
       - 9000:9000
     depends_on:
-      - db
-    command: bash -c "yarn seed && yarn dev"
+      db:
+        condition: service_healthy
+#    command: bash -c "yarn seed && yarn dev" #dev
+#    command: bash -c "yarn seed && yarn build && yarn start"
+    command: bash -c "yarn build && yarn start"
 #    tty: true
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://localhost:9000/health" ]
@@ -42,19 +42,17 @@ services:
     build:
       dockerfile: storefront.Dockerfile
     volumes:
+      - ./z-commerce-storefront/next.config.js:/app/next.config.js
       - ./z-commerce-storefront/src:/app/src
       - ./storefront.env:/app/.env
     ports:
 #      - 80:8000 #dev
       - 80:8001 #build
     depends_on:
-      - medusa
-#    command: yarn dev
+      medusa:
+        condition: service_healthy
+    #    command: yarn dev
     command: bash -c "yarn build && yarn start"
     healthcheck:
 #      test: [ "CMD", "curl", "-f", "http://localhost:8000" ] #dev
       test: [ "CMD", "curl", "-f", "http://localhost:8001" ] #build
-      interval: 30s
-      timeout: 60s
-      retries: 5
-      start_period: 80s
