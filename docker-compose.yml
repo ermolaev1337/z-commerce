@@ -21,8 +21,8 @@ services:
     build:
       dockerfile: medusa.Dockerfile
     volumes:
-      - ./z-commerce/src:/app/src
-      - ./z-commerce/.env:/app/.env
+      - ./z-commerce-medusa/src:/app/src
+      - ./medusa.env:/app/.env
     ports:
       - 7001:7001
       - 9000:9000
@@ -43,7 +43,7 @@ services:
       dockerfile: storefront.Dockerfile
     volumes:
       - ./z-commerce-storefront/src:/app/src
-      - ./z-commerce-storefront/.env:/app/.env
+      - ./storefront.env:/app/.env
     ports:
       - 80:8000
     depends_on:

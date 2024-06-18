@@ -1,0 +1,6 @@
+[submodule "z-commerce-storefront"]
+	path = z-commerce-storefront
+	url = https://github.com/ermolaev1337/z-commerce-storefront.git
+[submodule "z-commerce-medusa"]
+	path = z-commerce-medusa
+	url = https://github.com/ermolaev1337/z-commerce-medusa.git
