@@ -27,8 +27,8 @@ services:
       db:
         condition: service_healthy
 #    command: bash -c "yarn seed && yarn dev" #dev
-#    command: bash -c "yarn seed && yarn build && yarn start"
-    command: bash -c "yarn build && yarn start"
+    command: bash -c "yarn seed && yarn build && yarn start"
+#    command: bash -c "yarn build && yarn start"
 #    tty: true
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://localhost:9000/health" ]
