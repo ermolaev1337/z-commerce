@@ -1,8 +1,8 @@
 FROM node
 
-COPY ./z-commerce/package.json /app/package.json
+COPY ./z-commerce-medusa/package.json /app/package.json
 WORKDIR /app
 RUN yarn
 
 RUN yarn global add @medusajs/medusa-cli
-COPY ./z-commerce /app
+COPY ./z-commerce-medusa /app
