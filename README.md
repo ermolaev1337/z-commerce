@@ -18,6 +18,11 @@ docker-compose build
 docker-compose up
 ```
 
+
 ### Launching
 
-[localhost](http://localhost/)
+Wait for the [Storefront](http://localhost/) to be running
+
+Credentials for [Admin Panel](http://localhost:7001/login) are: login ```admin@medusa-test.com```, password ```supersecret``` 
+
+
