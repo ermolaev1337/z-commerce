@@ -7,8 +7,6 @@ services:
       - POSTGRES_DB=root
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=root
-    ports:
-      - 5432:5432
     healthcheck:
       test: [ "CMD-SHELL", "pg_isready", "-d", "db_prod" ]
 
@@ -45,14 +43,16 @@ services:
       - ./z-commerce-storefront/next.config.js:/app/next.config.js
       - ./z-commerce-storefront/src:/app/src
       - ./storefront.env:/app/.env
+      - ./z-commerce-storefront/package.json:/app/package.json
     ports:
 #      - 80:8000 #dev
       - 80:8001 #build
     depends_on:
       medusa:
         condition: service_healthy
-    #    command: yarn dev
-    command: bash -c "yarn build && yarn start"
+    command: npm run dev
+#    command: bash -c "yarn build && yarn start"
+#    tty: true
     healthcheck:
 #      test: [ "CMD", "curl", "-f", "http://localhost:8000" ] #dev
       test: [ "CMD", "curl", "-f", "http://localhost:8001" ] #build

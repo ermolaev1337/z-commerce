@@ -2,6 +2,6 @@ FROM node
 
 COPY ./z-commerce-storefront/package.json /app/package.json
 WORKDIR /app
-RUN yarn
+RUN npm i
 
 COPY ./z-commerce-storefront /app
