@@ -4,3 +4,15 @@
 [submodule "z-commerce-medusa"]
 	path = z-commerce-medusa
 	url = https://github.com/ermolaev1337/z-commerce-medusa.git
+[submodule "z-commerce-socket"]
+	path = z-commerce-socket
+	url = https://github.com/ermolaev1337/z-commerce-socket.git
+[submodule "z-commerce-heimdall"]
+	path = z-commerce-heimdall
+	url = https://github.com/ermolaev1337/heimdall.git
+[submodule "z-commerce-wallet"]
+	path = z-commerce-wallet
+	url = https://github.com/ermolaev1337/z-commerce-wallet.git
+[submodule "z-commerce-controller"]
+	path = z-commerce-controller
+	url = https://github.com/ermolaev1337/mdec-controller.git

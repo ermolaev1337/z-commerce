@@ -6,4 +6,5 @@ RUN yarn
 
 COPY ./z-commerce-storefront /app
 
-# RUN yarn build
+COPY ./storefront.env /app/.env
+RUN yarn build # REQUIRES THE MEDUSA BACKEND RUNNING FOR PAGES

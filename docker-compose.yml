@@ -14,9 +14,9 @@ services:
     container_name: medusa
     build:
       dockerfile: medusa.Dockerfile
-    volumes:
-      - ./z-commerce-medusa/src:/app/src
-      - ./medusa.env:/app/.env
+#    volumes:
+#      - ./z-commerce-medusa/src:/app/src #dev
+    env_file: medusa.env
     ports:
       - 9000:9000 # for build (admin panel is on localhost:9000/app)
     depends_on:
@@ -31,16 +31,35 @@ services:
     container_name: storefront
     build:
       dockerfile: storefront.Dockerfile
-    volumes:
-      - ./z-commerce-storefront/src:/app/src
-      - ./storefront.env:/app/.env
+      network: host
+    #    volumes:
+#      - ./z-commerce-storefront/src:/app/src #dev
+    env_file: storefront.env
     ports:
       - 80:80 # for build & dev
     depends_on:
       medusa:
         condition: service_healthy
-    command: yarn run dev # for dev
-#    command: bash -c "yarn build && yarn start" # for build
+#    command: yarn run dev # for dev
+    command: yarn start # for build
 #    tty: true
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://localhost" ] # for build & dev
+
+  socket:
+    restart: always
+    container_name: socket
+    build:
+      dockerfile: socket.Dockerfile
+    volumes:
+      - ./z-commerce-socket/src:/app/src
+#      - ./socket.env:/app/.env
+    ports:
+      - 8888:8888
+      - 7777:7777
+    depends_on:
+      storefront:
+        condition: service_healthy
+    command: yarn run start
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8888" ] # for build & dev
