@@ -5,3 +5,5 @@ WORKDIR /app
 RUN yarn
 
 COPY ./z-commerce-storefront /app
+
+# RUN yarn build

@@ -8,3 +8,5 @@ RUN yarn global add @medusajs/medusa-cli
 COPY ./z-commerce-medusa /app
 
 COPY ./uploads /app/uploads
+
+RUN yarn build

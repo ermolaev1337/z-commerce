@@ -15,25 +15,16 @@ services:
     build:
       dockerfile: medusa.Dockerfile
     volumes:
-      - ./z-commerce-medusa/medusa-config.js:/app/medusa-config.js
       - ./z-commerce-medusa/src:/app/src
       - ./medusa.env:/app/.env
     ports:
-#      - 7001:7001 #dev
-      - 9000:9000
+      - 9000:9000 # for build (admin panel is on localhost:9000/app)
     depends_on:
       db:
         condition: service_healthy
-#    command: bash -c "yarn seed && yarn dev" #dev
-    command: bash -c "yarn seed && yarn build && yarn start"
-#    command: bash -c "yarn build && yarn start"
-#    tty: true
+    command: bash -c "yarn seed && yarn start" # for build
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://localhost:9000/health" ]
-      interval: 30s
-      timeout: 60s
-      retries: 5
-      start_period: 80s
 
   storefront:
     restart: always
@@ -41,19 +32,15 @@ services:
     build:
       dockerfile: storefront.Dockerfile
     volumes:
-      - ./z-commerce-storefront/next.config.js:/app/next.config.js
       - ./z-commerce-storefront/src:/app/src
       - ./storefront.env:/app/.env
-      - ./z-commerce-storefront/package.json:/app/package.json
     ports:
-#      - 80:8000 #dev
-      - 80:8001 #build
+      - 80:80 # for build & dev
     depends_on:
       medusa:
         condition: service_healthy
-    command: yarn run dev
-#    command: bash -c "yarn build && yarn start"
+    command: yarn run dev # for dev
+#    command: bash -c "yarn build && yarn start" # for build
 #    tty: true
     healthcheck:
-#      test: [ "CMD", "curl", "-f", "http://localhost:8000" ] #dev
-      test: [ "CMD", "curl", "-f", "http://localhost:8001" ] #build
+      test: [ "CMD", "curl", "-f", "http://localhost" ] # for build & dev
