@@ -36,6 +36,7 @@ services:
       start_period: 80s
 
   storefront:
+    restart: always
     container_name: storefront
     build:
       dockerfile: storefront.Dockerfile
@@ -50,7 +51,7 @@ services:
     depends_on:
       medusa:
         condition: service_healthy
-    command: npm run dev
+    command: yarn run dev
 #    command: bash -c "yarn build && yarn start"
 #    tty: true
     healthcheck:
