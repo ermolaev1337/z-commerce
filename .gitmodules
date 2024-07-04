@@ -16,3 +16,6 @@
 [submodule "z-commerce-wallet"]
 	path = z-commerce-wallet
 	url = https://github.com/ermolaev1337/z-commerce-wallet.git
+[submodule "z-commerce-delivery"]
+	path = z-commerce-delivery
+	url = https://github.com/ermolaev1337/z-commerce-delivery.git
