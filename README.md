@@ -3,7 +3,7 @@
 All the submodules will be cloned automatically
 
 ```shell
-git clone https://github.com/ermolaev1337/medusa-zkp.git
+git clone https://github.com/ermolaev1337/z-commerce.git
 ```
 
 ### Building & Running
