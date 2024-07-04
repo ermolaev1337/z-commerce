@@ -49,7 +49,11 @@ docker-compose -f ./z-commerce-heimdall/docker-compose.yml up -d
 #until [ "`docker inspect -f {{.State.Health.Status}} bootstrap`"=="socket" ]; do
 #    sleep 0.1;
 #done;
-#echo Heimdall\'s Bootstrap Backend has finished
+echo Heimdall\'s Bootstrap Backend has finished
+
+docker-compose -f ./z-commerce-delivery/docker-compose.yml build
+docker-compose -f ./z-commerce-delivery/docker-compose.yml up -d
+echo Delivery Frontend has started
 
 
 
