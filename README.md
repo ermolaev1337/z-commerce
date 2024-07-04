@@ -6,18 +6,11 @@ All the submodules will be cloned automatically
 git clone https://github.com/ermolaev1337/medusa-zkp.git
 ```
 
-### Building
+### Building & Running
 
 ```shell
-docker-compose build
+sh start.sh
 ```
-
-### Running
-
-```shell
-docker-compose up
-```
-
 
 ### Launching
 
