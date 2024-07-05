@@ -3,7 +3,7 @@
 All the submodules will be cloned automatically
 
 ```shell
-git clone --recurse-submodules  https://github.com/ermolaev1337/z-commerce.git
+git clone --recurse-submodules https://github.com/ermolaev1337/z-commerce.git
 ```
 
 ### Important
