@@ -25,10 +25,14 @@ echo Medusa Frontend is healthy and running
 
 docker compose -f ./z-commerce-socket/docker-compose.yml build
 docker compose -f ./z-commerce-socket/docker-compose.yml up -d
-until [ "`docker inspect -f {{.State.Health.Status}} socket`"=="healthy" ]; do
+until [ "`docker inspect -f {{.State.Health.Status}} socket-delivery`"=="healthy" ]; do
     sleep 0.1;
 done;
-echo Medusa Socket is healthy and running
+echo Medusa Socket Delivery is healthy and running
+until [ "`docker inspect -f {{.State.Health.Status}} socket-storefront `"=="healthy" ]; do
+    sleep 0.1;
+done;
+echo Medusa Socket Storefront is healthy and running
 
 docker compose -f ./z-commerce-controller/docker-compose.yml build
 docker compose -f ./z-commerce-controller/docker-compose.yml up -d
@@ -54,6 +58,3 @@ echo Heimdall\'s Bootstrap Backend has finished
 docker compose -f ./z-commerce-delivery/docker-compose.yml build
 docker compose -f ./z-commerce-delivery/docker-compose.yml up -d
 echo Delivery Frontend has started
-
-
-
