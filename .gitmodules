@@ -1,35 +1,35 @@
 [submodule "z-commerce-storefront"]
 	path = z-commerce-storefront
 	url = https://github.com/ermolaev1337/z-commerce-storefront.git
-    branch = arch
+    branch = deploy
 
 [submodule "z-commerce-medusa"]
 	path = z-commerce-medusa
 	url = https://github.com/ermolaev1337/z-commerce-medusa.git
-    branch = arch
+    branch = deploy
 
 [submodule "z-commerce-heimdall"]
 	path = z-commerce-heimdall
 	url = https://github.com/ermolaev1337/z-commerce-heimdall.git
-    branch = arch
+    branch = deploy
 
 [submodule "z-commerce-socket"]
 	path = z-commerce-socket
 	url = https://github.com/ermolaev1337/z-commerce-socket.git
-    branch = arch
+    branch = deploy
 
 [submodule "z-commerce-controller"]
 	path = z-commerce-controller
 	url = https://github.com/ermolaev1337/z-commerce-controller.git
-    branch = arch
+    branch = deploy
 
 [submodule "z-commerce-wallet"]
 	path = z-commerce-wallet
 	url = https://github.com/ermolaev1337/z-commerce-wallet.git
-    branch = arch
+    branch = deploy
 
 [submodule "z-commerce-delivery"]
 	path = z-commerce-delivery
 	url = https://github.com/ermolaev1337/z-commerce-delivery.git
-    branch = arch
+    branch = deploy
 
