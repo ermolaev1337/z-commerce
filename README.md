@@ -2,8 +2,18 @@
 
 All the submodules will be cloned automatically
 
+Branch ```arch```
 ```shell
-git clone --recurse-submodules https://github.com/ermolaev1337/z-commerce.git
+git clone --branch arch --recurse-submodules https://github.com/ermolaev1337/z-commerce.git
+cd z-commerce
+git submodule foreach --recursive 'git checkout arch'
+```
+
+Branch ```deploy```
+```shell
+git clone --branch deploy --recurse-submodules https://github.com/ermolaev1337/z-commerce.git
+cd z-commerce
+git submodule foreach --recursive 'git checkout deploy'
 ```
 
 ### Important
